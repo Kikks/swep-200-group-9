@@ -1,0 +1,160 @@
+/* Nav section */
+
+.nav {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav__li {
+    padding: 1rem 9rem 1rem 0;
+}
+
+.nav__ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.nav__a1, .nav__a2 {
+    text-decoration: none;
+}
+
+.nav__a1 {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.nav__a2 {
+    border-bottom: 5px solid #458FF6;
+    color: #233348;
+}
+
+.container {
+    border-radius: 50px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* welcome section */
+
+.welcome__section {
+    margin-left: 5rem;
+}
+
+.welcome {
+    font-size: 25px;
+    font-weight: 700;
+    color: #233348;
+}
+
+.small {
+    font-size: 15px;
+    font-weight: 300;
+    color: #458FF6;
+}
+
+.checkname {
+    padding-left: .5rem;
+    font-weight: 300;
+    font-size: 15px;
+    color: #233348;
+}
+
+/* form section */
+
+.form {
+    color: hsla(214, 35%, 21%, 1);
+}
+
+.reg__no {
+    padding: 2rem 0 0 5rem;
+}
+
+.reg {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.reg__input, .pwd {
+    width: 70%;
+    border: none;
+    border-bottom: 1px solid #B4B4B4;
+    border-radius: 5px;
+    padding: .5rem;
+    margin: 1rem 0;
+}
+
+.reg__input:hover, .pwd:hover {
+    border: 2px solid hsla(215, 91%, 62%, 1);
+}
+
+.number {
+    font-size: 10px;
+    font-weight: 300;
+}
+
+.password__section {
+    padding: 1rem 0 0 5rem;
+}
+
+.password {
+    padding-right: 9rem;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.pwd__check {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.pwd__forgot {
+    color: hsla(215, 91%, 62%, 1);
+    font-size: 15px;
+    font-weight: 600;
+    padding-left: 12rem;
+}
+
+/* button */
+
+.submit {
+    background-color: hsla(215, 91%, 62%, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    border-radius: 50px;
+    color: hsla(0, 7%, 97%, 1);
+    width: 128px;
+    height: 40px;
+    margin: 2rem 0 0 20rem;
+    cursor: pointer;
+}
+
+/* Footer section */
+
+.footer {
+    text-align: center;
+    margin: 2rem 0 0 4rem;
+    padding: 1rem 1rem;
+    line-height: 25px;
+    width: 80%;
+    border-top: 1px solid #E5E5E5;
+}
+
+.sign__up {
+    color: #458FF6;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.sub__sign__up {
+    font-weight: 500;
+    font-size: 18px;
+    padding-left: .5rem;
+}
+
+.policy {
+    font-weight: 500;
+    font-size: 15px;
+}
