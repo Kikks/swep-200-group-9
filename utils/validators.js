@@ -27,8 +27,7 @@ export const validateSignUpInputs = ({
 }) => {
 	const validationErrors = {};
 	const regex =
-		/^([a-zA-Z0-9\.-_]+)@([a-zA-Z0-9-]+)\.([a-z]{2,20})(\.[a-z]{2,20})?$/;
-
+		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	if (email.trim() === "") {
 		validationErrors.email = "Email must not be empty";
 	} else if (!email.match(regex)) {
@@ -67,8 +66,7 @@ export const validateSignUpInputs = ({
 export const validateSendCodeInputs = ({ email, regNo }) => {
 	const validationErrors = {};
 	const regex =
-		/^([a-zA-Z0-9\.-_]+)@([a-zA-Z0-9-]+)\.([a-z]{2,20})(\.[a-z]{2,20})?$/;
-
+		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 	if (email.trim() === "") {
 		validationErrors.email = "Email must not be empty";
 	} else if (!email.match(regex)) {
