@@ -1,0 +1,55 @@
+.checkbox__container {
+	display: grid;
+	gap: 1rem;
+}
+
+.form__control {
+	font-size: inherit;
+	color: inherit;
+	display: grid;
+	align-items: center;
+	grid-template-columns: 2.2rem auto;
+	gap: 1rem;
+	text-transform: capitalize;
+}
+
+.input[type="checkbox"] {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	font: inherit;
+	color: currentColor;
+	width: 2.2rem;
+	height: 2.2rem;
+	border-radius: 0.15rem;
+	border: 0.2rem solid #b4b4b4;
+	display: grid;
+	justify-items: center;
+	align-items: center;
+}
+
+.input[type="checkbox"]::before {
+	content: "";
+	width: 1.4rem;
+	height: 1.4rem;
+	border-radius: 0.15rem;
+	transform: scale(0);
+	transition: 0.2s transform ease-in-out;
+	box-shadow: inset 1rem 1rem var(--main-blue);
+	background-color: var(--main-blue);
+	transform-origin: center center;
+	clip-path: polygon(14% 50%, 0 65%, 40% 100%, 100% 24%, 80% 12%, 35% 70%);
+}
+
+.input[type="checkbox"]:checked::before {
+	transform: scale(1);
+}
+
+.helperText {
+	font-size: 1.3rem;
+}
+
+.errorText {
+	font-size: 1.3rem;
+	color: red;
+}

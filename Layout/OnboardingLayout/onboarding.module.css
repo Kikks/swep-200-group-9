@@ -6,79 +6,58 @@
 }
 
 .logo__container {
-  display: flex;
-  align-items: center;
-  width: 100%;
+	display: flex;
+	align-items: center;
+	width: 100%;
 }
 
 .logo {
-  height: 4rem;
-  width: 15rem;
-  position: relative;
-  margin-right: 1rem;
+	height: 4.7rem;
+	width: 15rem;
+	position: relative;
+	margin-right: 1rem;
 }
 
-.svg__white__background {
-	background-color: #fff;
+.intro__container {
 	height: 100%;
-	flex: 0.4;
-}
-
-@media screen and (max-width: 1024px) {
-	.svg__white__background {
-		display: none;
-	}
-}
-
-.svg__container {
-	background-color: var(--light-blue);
-	height: 100%;
-	width: 100%;
-	border-bottom-right-radius: 10rem;
+	flex: 0.45;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	align-content: center;
 	padding: 3rem;
-}
-
-.svg__container span {
-	text-align: center;
-	margin-top: 2rem;
-}
-.svg__wrapper {
-	width: 100%;
-	display: grid;
-	align-items: center;
-	justify-items: center;
-	flex: 1;
-}
-
-.svg {
-	width: 100%;
-	height: 80vh;
-	max-height: 40rem;
-	position: relative;
-}
-
-.form__blue__background {
-	background-color: var(--light-blue);
-	flex: 0.6;
-	height: 100%;
+	background-size: cover;
+	background-position: center center;
 }
 
 @media screen and (max-width: 1024px) {
-	.form__blue__background {
-		flex: 1;
+	.intro__container {
+		display: none;
 	}
 }
 
-.form__white__background {
+.content {
+	display: grid;
+	gap: 3rem;
+	text-align: center;
+	justify-items: center;
+	max-width: 35rem;
+}
+
+.content p {
+	font-size: 1.8rem;
+	font-weight: lighter;
+}
+
+.title {
+	font-size: 3.8rem;
+}
+
+.children__container {
+	flex: 0.55;
 	height: 100%;
-	width: 100%;
 	background-color: #fff;
-	border-top-left-radius: 10rem;
 	padding: 5rem;
 	padding-bottom: 2rem;
 	display: flex;
@@ -89,13 +68,13 @@
 }
 
 @media screen and (max-width: 1024px) {
-	.form__white__background {
-		border-radius: 0;
+	.children__container {
+		flex: 1;
 	}
 }
 
 @media screen and (max-width: 600px) {
-	.form__white__background {
+	.children__container {
 		padding: 2rem;
 	}
 }
@@ -103,6 +82,8 @@
 .view {
 	flex: 1;
 	width: 100%;
+	display: grid;
+	justify-items: center;
 }
 
 .socials__container {
@@ -139,7 +120,7 @@
 
 @media screen and (max-width: 450px) {
 	.contact__item {
-    margin-bottom: 1rem;
+		margin-bottom: 1rem;
 	}
 }
 

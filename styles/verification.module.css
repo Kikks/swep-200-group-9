@@ -1,0 +1,179 @@
+.container {
+	width: 100%;
+	max-width: 50rem;
+	display: grid;
+	align-content: flex-start;
+	gap: 2rem;
+	padding: 2rem 0;
+}
+
+.radio__container {
+	display: grid;
+	gap: 1rem;
+}
+
+.radio__group {
+	display: flex;
+	align-items: center;
+	gap: 5rem;
+}
+
+.text__container {
+	display: flex;
+	column-gap: 11rem;
+	justify-content: center;
+}
+
+.signup__container {
+	width: 100%;
+	text-align: center;
+	align-self: flex-end;
+	margin-top: 3rem;
+}
+
+.form {
+	display: grid;
+	height: 100%;
+	align-items: center;
+	align-content: flex-start;
+	margin-top: 3rem;
+}
+
+.password__options {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn__container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 3rem;
+}
+
+.general__error {
+	padding: 1rem;
+	background-color: var(--error);
+	color: #fff;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+.general__error p {
+	margin-left: 2rem;
+}
+
+.profile__container {
+	width: 100%;
+	display: grid;
+	gap: 1rem;
+}
+
+.heading__container {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.status__container {
+	display: flex;
+	align-items: center;
+}
+
+.status {
+	margin-left: 2rem;
+	padding: 0.7rem 1.5rem;
+	border-radius: 0.5rem;
+	text-transform: capitalize;
+	background-color: var(--dark-gray);
+	color: #fff;
+	font-size: 1.3rem;
+}
+
+.declined {
+	background-color: var(--error);
+}
+
+.incomplete {
+	background-color: var(--warning);
+}
+
+.inreview {
+	background-color: var(--dark-blue);
+}
+
+.complete {
+	background-color: var(--success);
+}
+
+.comment__container {
+	width: 100%;
+	padding: 2rem;
+	background-color: var(--main-blue);
+	color: #fff;
+	border-radius: 0.5rem;
+	display: grid;
+	gap: 1rem;
+}
+
+.comment {
+	font-size: 1.4rem;
+}
+
+.upload__group {
+	width: 100%;
+	padding-top: 2.5rem;
+	padding-bottom: 1rem;
+	display: grid;
+	gap: 1rem;
+	border-top: solid 0.1rem var(--light-gray);
+}
+
+.upload__group h4 {
+	padding-bottom: 1rem;
+}
+
+.uploaded__image,
+.uploading__image,
+.upload__image {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	padding: 0 2rem;
+	gap: 1.5rem;
+}
+
+.uploaded__image span,
+.uploading__image span,
+.upload__image span {
+	flex: 1;
+}
+.input {
+	display: none;
+}
+
+.upload__error {
+	font-size: 1.1rem;
+	padding: 0.7rem 1.5rem;
+	background-color: var(--error);
+	border-radius: 0.5rem;
+	color: #fff;
+}
+
+.modal__container {
+	min-height: 20rem;
+	display: grid;
+	gap: 2rem;
+	justify-items: center;
+	text-align: center;
+	grid-template-rows: 8.8rem auto auto 1fr;
+	align-items: flex-start;
+}
+
+.modal__container a {
+	align-self: flex-end;
+	text-decoration: none;
+}
