@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Auth from "../containers/Auth";
 
 // Layout
-import Layout from "../layout/AppLayout";
+import Layout from "../Layout/AppLayout";
 
 // Store
 import store from "../store";
