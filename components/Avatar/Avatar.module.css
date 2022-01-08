@@ -1,0 +1,23 @@
+.avatar {
+	height: 3.5rem;
+	width: 3.5rem;
+	background-color: #ccc;
+	border-radius: 50%;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.avatar h4 {
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.image {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}

@@ -1,0 +1,73 @@
+.button {
+	padding: 1rem 3.5rem;
+	border-radius: 5rem;
+	font: inherit;
+	outline: none;
+	border: none;
+	box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.3);
+	transform: translateY(0) scale(1);
+	transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button:hover {
+	transform: translateY(-0.1rem) scale(1.05);
+	box-shadow: 0 0.5rem 1.4rem rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+	transform: translateY(0rem) scale(0.95);
+	box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.button:disabled {
+	background-color: var(--dark-gray);
+	cursor: not-allowed;
+}
+
+.button:disabled:hover {
+	box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.3);
+	transform: translateY(0) scale(1);
+}
+
+.button:disabled:active {
+	box-shadow: 0 0.5rem 0.7rem rgba(0, 0, 0, 0.3);
+	transform: translateY(0) scale(1);
+}
+
+.button--main-blue {
+	background-color: var(--main-blue);
+	color: #fff;
+}
+
+.button--dark-blue {
+	background-color: var(--dark-blue);
+	color: #fff;
+}
+
+.button--pink {
+	background-color: var(--pink);
+	color: #fff;
+}
+
+.button--error {
+	background-color: var(--error);
+	color: #fff;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loader {
+	animation: spin 1s ease-in-out infinite;
+}

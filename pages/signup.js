@@ -1,76 +1,245 @@
-import React from "react";
-import reactDom, { findDOMNode } from "react-dom";
-import Image from 'next/image'
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import { useMutation } from "react-query";
+import { useSelector } from "react-redux";
+import { BiError } from "react-icons/bi";
 
 // Components
 import OnboardingLayout from "../Layout/OnboardingLayout";
-import Input from "../Input";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import Checkbox from "../components/Checkbox";
+import Modal from "../components/Modal";
+
+// Utils
+import { postRequest } from "../utils/api/calls";
+import { REGISTER } from "../utils/api/urls";
+import { validateSignUpInputs } from "../utils/validators";
 
 //styles
-import styles from '../styles/signup.module.css';
+import styles from "../styles/signup.module.css";
 
-const addActive = () =>{
-	return(
-		<button className={styles.sign} id={styles['active']}></button>
-	)
-}
+const emptyErrors = {
+	firstName: "",
+	lastName: "",
+	registrationNumber: "",
+	email: "",
+	password: "",
+	confirmPassword: "",
+	checked: "",
+	general: ""
+};
 
 const Signup = () => {
+	const { user } = useSelector(state => state.user);
+	const router = useRouter();
+	const [payload, setPayload] = useState({
+		firstName: "",
+		lastName: "",
+		email: "",
+		registrationNumber: "",
+		password: "",
+		confirmPassword: ""
+	});
+	const [errors, setErrors] = useState(emptyErrors);
+	const [isChecked, setIsChecked] = useState(false);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+
+	useEffect(() => {
+		if (user) {
+			router.push("/verification");
+		}
+	}, [user, router]);
+
+	const { mutate, isLoading } = useMutation(postRequest, {
+		onSuccess(data) {
+			if (data?.data) {
+				setModalIsOpen(true);
+				setErrors(emptyErrors);
+			}
+		},
+		onError(error) {
+			setErrors({
+				...emptyErrors,
+				general: error?.response?.data?.message
+			});
+		}
+	});
+
+	const handleChange = event => {
+		setPayload({
+			...payload,
+			[event.target.name]: event.target.value
+		});
+	};
+
+	const onSubmitHandler = event => {
+		event.preventDefault();
+		const { valid, errors: validationErrors } = validateSignUpInputs({
+			...payload,
+			checked: isChecked
+		});
+
+		if (!valid) {
+			setErrors({
+				...emptyErrors,
+				...validationErrors
+			});
+		} else {
+			mutate({
+				url: REGISTER,
+				data: payload
+			});
+		}
+	};
+
 	return (
-		<OnboardingLayout>
+		<OnboardingLayout
+			image='/img/login.png'
+			title='Virtual healthcare for you'
+			body={
+				<>
+					<p className='text-white'>
+						Experience better medical care with{" "}
+						<span className='bold'>MedEase</span>
+					</p>
+
+					<p className='text-white'>
+						<span className='bold'>Sign in</span> to continue with the
+						experience
+					</p>
+				</>
+			}
+		>
 			<div className={styles.container}>
-				<div className={styles.text__container}>
-					<button className={styles.sign} onClick={() => addActive()}  id={styles['active']}>Sign Up</button>
-					<button className={styles.sign} onClick={()=> addActive()}>Sign In</button>
+				<h2 className='heading--2'>Welcome Back!</h2>
+
+				<div className={styles.radio__container}>
+					<span className='text-main-blue'>Register your account</span>
 				</div>
-				<div className={styles.form__container}>
-					<form className={styles.form}>
-						<div>
-							<div className={styles.welcome}>Welcome to Tanwine!</div>
-							<div className={styles.helper}>Create a new account</div>
-						</div>
-						
-						<Input className={styles.Input} placeholder='Full Name'></Input>
-						<Input className={styles.Input} placeholder='Registration Number'></Input>
-						
-						<div className={styles.password}>
-						<Input className={styles.Input} placeholder='Password'></Input>
-						<figure className={styles.svg__container}>
-						<svg className={styles.svg} width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M11.25 5H10.625V3.75C10.625 2.025 9.225 0.625 7.5 0.625C5.775 0.625 4.375 2.025 4.375 3.75V5H3.75C3.0625 5 2.5 5.5625 2.5 6.25V12.5C2.5 13.1875 3.0625 13.75 3.75 13.75H11.25C11.9375 13.75 12.5 13.1875 12.5 12.5V6.25C12.5 5.5625 11.9375 5 11.25 5ZM5.625 3.75C5.625 2.7125 6.4625 1.875 7.5 1.875C8.5375 1.875 9.375 2.7125 9.375 3.75V5H5.625V3.75ZM11.25 12.5H3.75V6.25H11.25V12.5ZM7.5 10.625C8.1875 10.625 8.75 10.0625 8.75 9.375C8.75 8.6875 8.1875 8.125 7.5 8.125C6.8125 8.125 6.25 8.6875 6.25 9.375C6.25 10.0625 6.8125 10.625 7.5 10.625Z" fill="#233348"/>
-						</svg>
-						</figure>
-						</div>
-						
-						<div className={styles.password}>
-						<Input className={styles.input__last} placeholder='Confirm Password'></Input>
-						
-						<figure className={styles.svg__container}>
-						<svg className={styles.svg} width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M11.25 5H10.625V3.75C10.625 2.025 9.225 0.625 7.5 0.625C5.775 0.625 4.375 2.025 4.375 3.75V5H3.75C3.0625 5 2.5 5.5625 2.5 6.25V12.5C2.5 13.1875 3.0625 13.75 3.75 13.75H11.25C11.9375 13.75 12.5 13.1875 12.5 12.5V6.25C12.5 5.5625 11.9375 5 11.25 5ZM5.625 3.75C5.625 2.7125 6.4625 1.875 7.5 1.875C8.5375 1.875 9.375 2.7125 9.375 3.75V5H5.625V3.75ZM11.25 12.5H3.75V6.25H11.25V12.5ZM7.5 10.625C8.1875 10.625 8.75 10.0625 8.75 9.375C8.75 8.6875 8.1875 8.125 7.5 8.125C6.8125 8.125 6.25 8.6875 6.25 9.375C6.25 10.0625 6.8125 10.625 7.5 10.625Z" fill="#233348"/>
-						</svg>
-						</figure>
-						</div>
-						
-						<div className={styles.btn__container}>
-						<button className={styles.btn}>
-							Submit
-						</button>
-						</div>
 
-						<div className={styles.line}></div>
-
-						<div className={styles.form__footer}>
-							<button className={styles.blue_text}>I already have an account? <button className={styles.text}>Sign in</button></button>
+				<form className={styles.form} onSubmit={onSubmitHandler}>
+					{errors.general.trim() !== "" && (
+						<div className={styles.general__error}>
+							<BiError color='#fff' size='2.5rem' />
+							<p>{errors.general}</p>
 						</div>
+					)}
 
-						<div className={styles.term}>
-							<span>Terms of use. Privacy policy</span>
-						</div>
-					</form>
-			
+					<Input
+						placeholder='Enter you First Name'
+						label='First Name'
+						name='firstName'
+						value={payload.firstName}
+						onChange={event => handleChange(event)}
+						error={errors.firstName.trim() !== ""}
+						helperText={errors.firstName}
+					/>
+					<Input
+						placeholder='Enter you Last Name'
+						label='Last Name'
+						name='lastName'
+						value={payload.lastName}
+						onChange={event => handleChange(event)}
+						error={errors.lastName.trim() !== ""}
+						helperText={errors.lastName}
+					/>
+					<Input
+						placeholder='(Staff ID / Student Matric Number / UTME Number'
+						label='Registration Number'
+						name='registrationNumber'
+						value={payload.registrationNumber}
+						onChange={event => handleChange(event)}
+						error={errors.registrationNumber.trim() !== ""}
+						helperText={errors.registrationNumber}
+					/>
+					<Input
+						placeholder='Enter you email'
+						label='Email'
+						name='email'
+						value={payload.email}
+						onChange={event => handleChange(event)}
+						error={errors.email.trim() !== ""}
+						helperText={errors.email}
+					/>
+
+					<Input
+						placeholder='Enter your password'
+						label='Password'
+						type='password'
+						name='password'
+						value={payload.password}
+						onChange={event => handleChange(event)}
+						error={errors.password.trim() !== ""}
+						helperText={errors.password}
+					/>
+					<Input
+						placeholder='Enter your password again'
+						label='Confirm Password'
+						type='password'
+						name='confirmPassword'
+						value={payload.confirmPassword}
+						onChange={event => handleChange(event)}
+						error={errors.confirmPassword.trim() !== ""}
+						helperText={errors.confirmPassword}
+					/>
+
+					<div className={styles.password__options}>
+						<Checkbox
+							checked={isChecked}
+							label={
+								<p style={{ textTransform: "none" }}>
+									<span>By signing up, I agree to the </span>
+									{""}
+									<Link href='/signup' passHref>
+										<a className='text-main-blue link'>terms and conditions</a>
+									</Link>
+								</p>
+							}
+							onChange={() => setIsChecked(prevState => !prevState)}
+							error={errors.checked.trim() !== ""}
+							helperText={errors.checked}
+						/>
+					</div>
+
+					<div className={styles.btn__container}>
+						<Button loading={isLoading}>Sign Up</Button>
+					</div>
+				</form>
+
+				<div className={styles.signup__container}>
+					<p>
+						Already have an account?{" "}
+						<Link href='/login' passHref>
+							<a className='text-main-blue link'>Log in</a>
+						</Link>
+					</p>
 				</div>
 			</div>
+
+			{modalIsOpen && (
+				<Modal>
+					<div className={styles.modal__container}>
+						<Image
+							src='/img/mark.png'
+							alt='Mark image'
+							height={88}
+							width={88}
+						/>
+
+						<h4 className='heading--4'>Sign up Successful!</h4>
+
+						<p>
+							Please proceed to{" "}
+							<Link href='/login' passHref>
+								<a className='text-main-blue bold'>Log in</a>
+							</Link>
+						</p>
+					</div>
+				</Modal>
+			)}
 		</OnboardingLayout>
 	);
 };

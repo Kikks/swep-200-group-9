@@ -1,0 +1,52 @@
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes pop-up {
+	0% {
+		transform: scale(0);
+	}
+
+	70% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+.backdrop {
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	background-color: rgba(0, 0, 0, 0.85);
+	padding: 3rem;
+	z-index: 50000;
+	animation: fade-in 0.3s;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.loader {
+	animation: spin 1s ease-in-out infinite;
+}

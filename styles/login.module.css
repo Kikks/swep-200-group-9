@@ -33,11 +33,11 @@
 }
 
 .form {
-	display: grid;
-	height: 100%;
-	align-items: center;
-	align-content: flex-start;
-	margin-top: 3rem;
+  display: grid;
+  height: 100%;
+  align-items: center;
+  align-content: flex-start;
+  margin-top: 3rem;
 }
 
 .password__options {
@@ -53,26 +53,17 @@
 	margin-top: 3rem;
 }
 
-.title,
-.subtitle {
-	text-align: center !important;
+.general__error {
+	padding: 1rem;
+	background-color: var(--error);
+	color: #fff;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
 }
 
-.subtitle {
-	justify-self: center;
-	max-width: 35rem;
+.general__error p {
+	margin-left: 2rem;
 }
 
-.modal__container {
-	min-height: 20rem;
-	display: grid;
-	gap: 2rem;
-	justify-items: center;
-	text-align: center;
-	grid-template-rows: 8.8rem 8.8rem 1fr;
-	align-items: flex-start;
-}
 
-.modal__container p {
-	align-self: flex-end;
-}

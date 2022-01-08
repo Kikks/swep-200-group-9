@@ -1,24 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
 html {
-  font-size: 62.5%;  
+	font-size: 62.5%;
 }
 
 :root {
-  --main-blue: #458FF6;
-  --dark-blue: #233348;
-  --light-blue: #eff6fe;
-  --dark-gray: #b4b4b4;
-  --light-gray: #ededed;
-  --pink: #fa9ad2;
+	--main-blue: #458ff6;
+	--dark-blue: #233348;
+	--light-blue: #eff6fe;
+	--dark-gray: #b4b4b4;
+	--light-gray: #ededed;
+	--pink: #fa9ad2;
+	--error: #f74646;
+	--warning: #ffba3b;
+	--success: #45a845;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
-  font-size: 1.6rem;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-size: 1.6rem;
+	font-family: "Mulish", sans-serif;
+	position: relative;
+	overflow-x: hidden;
+}
+
+.heading--1 {
+	font-size: 6rem;
+}
+
+.heading--2 {
+	font-size: 4rem;
+}
+
+.heading--3 {
+	font-size: 3rem;
+}
+
+.heading--4 {
+	font-size: 2.5rem;
+}
+
+.heading--5 {
+	font-size: 2rem;
+}
+
+.heading--6 {
+	font-size: 1.7rem;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.text-white {
+	color: #fff;
+}
+
+.text-main-blue {
+	color: var(--main-blue);
+}
+
+.text-dark-blue {
+	color: var(--dark-blue);
+}
+
+.text-light-blue {
+	color: var(--light-blue);
+}
+
+.text-pink {
+	color: var(--pink);
+}
+
+a {
+	text-decoration: none;
+	transition: all 0.3s;
+}
+
+a:hover {
+	text-decoration: underline;
 }

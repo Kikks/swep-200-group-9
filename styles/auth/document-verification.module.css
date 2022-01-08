@@ -1,0 +1,157 @@
+.container {
+	padding: 3rem;
+	display: grid;
+	width: 100%;
+}
+
+.table__container {
+	overflow-x: auto;
+	width: 100%;
+}
+
+.table {
+	padding: 1rem 1.5rem;
+	empty-cells: show;
+	width: 100%;
+	min-width: 75rem;
+	background-color: #fff;
+	border-radius: 2rem;
+}
+
+.table__header {
+	width: 100%;
+	display: grid;
+	align-items: center;
+	gap: 3rem;
+	border-bottom: 0.1rem solid #aaa;
+	grid-template-columns: 5rem 1fr 0.6fr 0.4fr 5rem;
+}
+
+.table__header__cell {
+	padding: 1rem;
+}
+
+.table__header__cell span {
+	color: #aaa;
+}
+
+.row {
+	width: 100%;
+	display: grid;
+	align-items: center;
+	gap: 3rem;
+	border-bottom: 0.1rem solid #ddd;
+	grid-template-columns: 5rem 1fr 0.6fr 0.4fr 5rem;
+	padding: 1rem 0;
+}
+
+.cell {
+	padding: 1rem;
+}
+
+.cell span {
+	text-transform: capitalize;
+}
+
+.name__container {
+	display: flex;
+	align-items: center;
+}
+
+.name__container span {
+	margin-left: 1rem;
+}
+
+.status {
+	margin-left: 2rem;
+	padding: 0.7rem 1.5rem;
+	border-radius: 0.5rem;
+	text-transform: capitalize;
+	background-color: var(--dark-gray);
+	color: #fff;
+	font-size: 1.3rem;
+}
+
+.declined {
+	background-color: var(--error);
+}
+
+.incomplete {
+	background-color: var(--warning);
+}
+
+.inreview {
+	background-color: var(--dark-blue);
+}
+
+.complete {
+	background-color: var(--success);
+}
+
+.card {
+	width: 100%;
+	padding: 2rem;
+	background-color: #fff;
+	border-radius: 2rem;
+}
+
+.heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.name__container {
+	display: flex;
+	align-items: center;
+}
+
+.name {
+	margin-left: 0.5rem;
+	display: grid;
+	text-transform: capitalize;
+}
+
+.profile {
+	display: grid;
+	gap: 2rem;
+}
+
+.button__container {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.list {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem;
+	border-bottom: 0.1rem solid #ddd;
+}
+
+.heading__container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.back__container {
+	width: 100%;
+	margin-bottom: 2rem;
+}
+
+.modal__container {
+	min-height: 20rem;
+	display: grid;
+	gap: 2rem;
+	justify-items: center;
+	text-align: center;
+	grid-template-rows: 8.8rem 8.8rem 1fr;
+	align-items: flex-start;
+}
+
+.modal__container p {
+	align-self: flex-end;
+}

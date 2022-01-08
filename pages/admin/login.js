@@ -6,24 +6,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { BiError } from "react-icons/bi";
 
 // Components
-import OnboardingLayout from "../Layout/OnboardingLayout";
-import Input from "../components/Input";
-import Radio from "../components/Radio";
-import Checkbox from "../components/Checkbox";
-import Button from "../components/Button";
+import OnboardingLayout from "../../Layout/OnboardingLayout";
+import Input from "../../components/Input";
+import Checkbox from "../../components/Checkbox";
+import Button from "../../components/Button";
 
 // Utils
-import { postRequest } from "../utils/api/calls";
-import { LOGIN } from "../utils/api/urls";
-import { validateLoginInputs } from "../utils/validators";
+import { postRequest } from "../../utils/api/calls";
+import { LOGIN } from "../../utils/api/urls";
+import { validateLoginInputs } from "../../utils/validators";
 
 // Store
-import { login } from "../store/user";
+import { login } from "../../store/user";
 
 //styles
-import styles from "../styles/login.module.css";
-
-const roles = ["student", "doctor"];
+import styles from "../../styles/login.module.css";
 
 const emptyErrors = {
 	general: "",
@@ -44,17 +41,10 @@ const Login = () => {
 	const [isChecked, setIsChecked] = useState(false);
 
 	useEffect(() => {
-		if (user) {
-			router.push("/verification");
+		if (user?.role === "admin") {
+			router.push("/admin/main/dashboard");
 		}
 	}, [user, router]);
-
-	const onRadioChanged = event => {
-		setPayload({
-			...payload,
-			role: event.target.value
-		});
-	};
 
 	const { mutate, isLoading } = useMutation(postRequest, {
 		onSuccess(data) {
@@ -62,13 +52,13 @@ const Login = () => {
 				localStorage.setItem("token", data.data?.token);
 				dispatch(login(data?.data?.user));
 				setErrors(emptyErrors);
-				router.push("/verification");
+				router.push("/admin/main/dashboard");
 			}
 		},
 		onError(error) {
 			setErrors({
 				...emptyErrors,
-				general: error?.response?.data?.message
+				general: error?.response?.data?.message || ""
 			});
 		}
 	});
@@ -116,23 +106,10 @@ const Login = () => {
 			}
 		>
 			<div className={styles.container}>
-				<h2 className='heading--2'>Welcome Back!</h2>
+				<h2 className='heading--2'>Welcome Back Admin!</h2>
 
 				<div className={styles.radio__container}>
-					<span className='text-main-blue'>Sign in as</span>
-
-					<div className={styles.radio__group}>
-						{roles.map(item => (
-							<Radio
-								key={item}
-								value={item}
-								label={item}
-								name='role'
-								checked={payload.role === item}
-								onChange={event => onRadioChanged(event)}
-							/>
-						))}
-					</div>
+					<span className='text-main-blue'>Sign in to your account</span>
 				</div>
 
 				<form className={styles.form} onSubmit={onSubmitHandler}>
@@ -143,14 +120,8 @@ const Login = () => {
 						</div>
 					)}
 					<Input
-						placeholder={
-							payload.role === "doctor"
-								? "Enter you ID"
-								: "(Staff ID / Student Matric Number / UTME Number"
-						}
-						label={
-							payload.role === "doctor" ? "Doctor's ID" : "Registration Number"
-						}
+						placeholder='Enter your username'
+						label='Username'
 						name='registrationNumber'
 						value={payload.registrationNumber}
 						onChange={event => handleChange(event)}
@@ -175,25 +146,12 @@ const Login = () => {
 							label='Remember Password?'
 							onChange={() => setIsChecked(prevState => !prevState)}
 						/>
-
-						<Link href='/forgot-password' passHref>
-							<a className='text-main-blue link'>Forgot password?</a>
-						</Link>
 					</div>
 
 					<div className={styles.btn__container}>
 						<Button loading={isLoading}>Log in</Button>
 					</div>
 				</form>
-
-				<div className={styles.signup__container}>
-					<p>
-						Don&apos;t have an account?{" "}
-						<Link href='/signup' passHref>
-							<a className='text-main-blue link'>Sign up</a>
-						</Link>
-					</p>
-				</div>
 			</div>
 		</OnboardingLayout>
 	);

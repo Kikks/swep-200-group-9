@@ -1,0 +1,49 @@
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes pop-up {
+	0% {
+		transform: scale(0);
+	}
+
+	70% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+.backdrop {
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	background-color: rgba(255, 255, 255, 0.85);
+	padding: 3rem;
+	z-index: 5000;
+	animation: fade-in 0.3s;
+}
+
+.modal {
+	padding: 5rem;
+	width: 100%;
+	max-width: 60rem;
+	border-radius: 1rem;
+	box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+	background-color: #fff;
+	transform: scale(0);
+	animation: pop-up 0.3s 0.2s linear forwards;
+}
