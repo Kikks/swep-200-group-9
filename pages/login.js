@@ -120,19 +120,6 @@ const Login = () => {
 
 				<div className={styles.radio__container}>
 					<span className='text-main-blue'>Sign in as</span>
-
-					<div className={styles.radio__group}>
-						{roles.map(item => (
-							<Radio
-								key={item}
-								value={item}
-								label={item}
-								name='role'
-								checked={payload.role === item}
-								onChange={event => onRadioChanged(event)}
-							/>
-						))}
-					</div>
 				</div>
 
 				<form className={styles.form} onSubmit={onSubmitHandler}>
