@@ -6,7 +6,8 @@ const queryKeys = {
 	getStudentsStatisticsOne: "getStudentsStatisticsOne",
 	getStudentsStatisticsTwo: "getStudentsStatisticsTwo",
 	getEmergencies: "getEmergencies",
-	getMyEmergencies: "getMyEmergencies"
+	getMyEmergencies: "getMyEmergencies",
+	getHealthId: "getHealthId"
 };
 
 export default queryKeys;

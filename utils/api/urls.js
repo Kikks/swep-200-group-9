@@ -30,6 +30,9 @@ export const GET_STUDENTS_TWO = `${process.env.API_URL}/users/stage_two_vp/all`;
 export const GET_STUDENTS_STATISTICS_ONE = `${process.env.API_URL}/users/stage_one_vp/stats`;
 export const GET_STUDENTS_STATISTICS_TWO = `${process.env.API_URL}/users/stage_two_vp/stats`;
 export const GET_EMERGENCIES = `${process.env.API_URL}/emergencies`;
+export const POST_EMERGENCY = `${process.env.API_URL}/emergencies`;
 
 // User
 export const GET_MY_EMERGENCIES = `${process.env.API_URL}/emergencies/mine`;
+export const GET_HEALTH_ID = ({ registrationNo }) =>
+	`https://chi-swep-be.herokuapp.com/card?RegistrationNumber=${registrationNo}`;
