@@ -250,7 +250,7 @@ const Emergency = () => {
 
 						<div className={styles.modal__image__container}>
 							<GoogleMapReact
-								bootstrapURLKeys={{ key: "" }}
+								bootstrapURLKeys={{ key: process.env.GOOGLE_API_KEY || "" }}
 								defaultCenter={{
 									lat: currentemergency?.location.split(",")[1] || 0,
 									lng: currentemergency?.location.split(",")[0] || 0

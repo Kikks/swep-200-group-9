@@ -3,6 +3,7 @@ module.exports = {
 	env: {
 		API_URL: process.env.API_URL,
 		CLOUDINARY_URL: process.env.CLOUDINARY_URL,
-		CLOUDINARY_UPLOAD_PRESET: process.env.CLOUDINARY_UPLOAD_PRESET
+		CLOUDINARY_UPLOAD_PRESET: process.env.CLOUDINARY_UPLOAD_PRESET,
+		GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
 	}
 };
