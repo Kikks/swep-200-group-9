@@ -157,11 +157,7 @@ const Login = () => {
 					/>
 
 					<div className={styles.password__options}>
-						<Checkbox
-							checked={isChecked}
-							label='Remember Password?'
-							onChange={() => setIsChecked(prevState => !prevState)}
-						/>
+						<div />
 
 						<Link href='/forgot-password' passHref>
 							<a className='text-main-blue link'>Forgot password?</a>

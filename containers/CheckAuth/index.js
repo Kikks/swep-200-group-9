@@ -22,6 +22,7 @@ const CheckAuth = ({ children }) => {
 
 			if (userData.exp * 1000 < new Date()) {
 				dispatch(logout());
+				localStorage.removeItem("token");
 				router.push("/login");
 			}
 			if (userData?.role !== "user") {

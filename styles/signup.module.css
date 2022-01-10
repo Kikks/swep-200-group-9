@@ -76,3 +76,16 @@
 .modal__container p {
 	align-self: flex-end;
 }
+
+.general__error {
+	padding: 1rem;
+	background-color: var(--error);
+	color: #fff;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+.general__error p {
+	margin-left: 2rem;
+}

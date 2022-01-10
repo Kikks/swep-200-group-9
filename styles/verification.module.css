@@ -177,3 +177,7 @@
 	align-self: flex-end;
 	text-decoration: none;
 }
+
+.back__container {
+	width: 100%;
+}

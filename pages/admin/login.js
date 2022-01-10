@@ -140,14 +140,6 @@ const Login = () => {
 						helperText={errors.password}
 					/>
 
-					<div className={styles.password__options}>
-						<Checkbox
-							checked={isChecked}
-							label='Remember Password?'
-							onChange={() => setIsChecked(prevState => !prevState)}
-						/>
-					</div>
-
 					<div className={styles.btn__container}>
 						<Button loading={isLoading}>Log in</Button>
 					</div>
