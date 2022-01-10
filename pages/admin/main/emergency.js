@@ -28,6 +28,13 @@ const Marker = ({ text }) => (
 	</div>
 );
 
+const getLocation = string => {
+	if (!string) return 0;
+
+	if (isNaN(Number(string))) return 0;
+	else return Number(string);
+};
+
 const Emergency = () => {
 	const { user: admin } = useSelector(state => state.user);
 	const [emergencies, setEmergencies] = useState([]);
@@ -50,7 +57,7 @@ const Emergency = () => {
 			}),
 		{
 			onSuccess(data) {
-				setEmergencies(data?.data?.emergencies || []);
+				setEmergencies(data?.data?.emergencies?.reverse() || []);
 				setBackdropIsOpen(false);
 			},
 			onError(error) {
@@ -99,17 +106,6 @@ const Emergency = () => {
 									alignItems: "center"
 								}}
 							>
-								<span>Status</span>
-							</div>
-
-							<div
-								className={styles.table__header__cell}
-								style={{
-									display: "flex",
-									justifyContent: "center",
-									alignItems: "center"
-								}}
-							>
 								<span>View</span>
 							</div>
 						</div>
@@ -126,7 +122,7 @@ const Emergency = () => {
 							</div>
 						) : (
 							emergencies.map((emergency, index) => (
-								<div key={emergency?.user?._id || ""} className={styles.row}>
+								<div key={index} className={styles.row}>
 									<div
 										className={styles.cell}
 										style={{
@@ -154,19 +150,6 @@ const Emergency = () => {
 
 									<div className={styles.cell}>
 										<span>{emergency?.user?.health_center_id || ""}</span>
-									</div>
-
-									<div
-										className={styles.cell}
-										style={{
-											display: "flex",
-											justifyContent: "center",
-											alignItems: "center"
-										}}
-									>
-										<div className={`${styles.status} ${styles["error"]}`}>
-											<span>{"status" || ""}</span>
-										</div>
 									</div>
 
 									<div
@@ -239,7 +222,9 @@ const Emergency = () => {
 							<h6 className='heading--6' style={{ marginBottom: "1rem" }}>
 								Issue:
 							</h6>
-							<h5 className='heading--5'>{currentemergency?.issue}</h5>
+							<h5 className='heading--5' style={{ textAlign: "left" }}>
+								{currentemergency?.issue}
+							</h5>
 						</div>
 
 						<div className={styles}>
@@ -252,8 +237,8 @@ const Emergency = () => {
 							<GoogleMapReact
 								bootstrapURLKeys={{ key: process.env.GOOGLE_API_KEY || "" }}
 								defaultCenter={{
-									lat: currentemergency?.location.split(",")[1] || 0,
-									lng: currentemergency?.location.split(",")[0] || 0
+									lat: getLocation(currentemergency?.location?.split(",")[1]),
+									lng: getLocation(currentemergency?.location?.split(",")[0])
 								}}
 								defaultZoom={17}
 							>

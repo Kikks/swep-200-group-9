@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useQuery, useMutation } from "react-query";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { FaFileAlt } from "react-icons/fa";
+import { MdChevronLeft } from "react-icons/md";
 import {
 	MdDelete,
 	MdOutlineFileDownload,
@@ -33,6 +34,9 @@ import queryKeys from "../utils/api/queryKeys";
 
 //styles
 import styles from "../styles/verification.module.css";
+
+// Stire
+import { logout } from "../store/user";
 
 const imageState = {
 	url: "",
@@ -133,6 +137,7 @@ const Verification = () => {
 	const [biodata, setBioData] = useState(imageState);
 	const [clearance, setClearance] = useState(imageState);
 	const [passport, setPassport] = useState(imageState);
+	const dispatch = useDispatch();
 
 	const { isLoading, refetch } = useQuery(
 		queryKeys.getUserVerificationProfile,
@@ -240,6 +245,14 @@ const Verification = () => {
 		});
 	};
 
+	const onBackPress = () => {
+		localStorage.removeItem("token");
+		dispatch(logout());
+		setTimeout(() => {
+			router.push("/login");
+		}, 1000);
+	};
+
 	return (
 		<CheckAuth>
 			<OnboardingLayout
@@ -275,6 +288,14 @@ const Verification = () => {
 					</div>
 				) : (
 					<div className={styles.container}>
+						<div className={styles.back__container}>
+							<MdChevronLeft
+								color='#333'
+								size='2.5rem'
+								style={{ cursor: "pointer" }}
+								onClick={onBackPress}
+							/>
+						</div>
 						<h2 className='heading--2'>Upload Documents</h2>
 
 						<div className={styles.profile__container}>

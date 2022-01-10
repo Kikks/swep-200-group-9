@@ -22,6 +22,7 @@ const CheckAdmin = ({ children }) => {
 
 			if (userData.exp * 1000 < new Date()) {
 				dispatch(logout());
+				localStorage.removeItem("token");
 				router.push("/admin/login");
 			}
 			if (userData?.role !== "admin") {
