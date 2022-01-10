@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { MdVisibility, MdClose } from "react-icons/md";
+import { MdVisibility, MdClose, MdLocationPin } from "react-icons/md";
 import { useQuery } from "react-query";
 import { useSelector } from "react-redux";
+import GoogleMapReact from "google-map-react";
 
 // Containers
 import CheckAdmin from "../../../containers/CheckAdmin";
@@ -19,6 +20,13 @@ import queryKeys from "../../../utils/api/queryKeys";
 
 // Styles
 import styles from "../../../styles/auth/emergency.module.css";
+
+const Marker = ({ text }) => (
+	<div style={{ display: "flex", alignItems: "center" }}>
+		<MdLocationPin style={{ color: "#ff0000" }} />
+		<span style={{ color: "#fff" }}>{text}</span>
+	</div>
+);
 
 const Emergency = () => {
 	const { user: admin } = useSelector(state => state.user);
@@ -241,7 +249,20 @@ const Emergency = () => {
 						</div>
 
 						<div className={styles.modal__image__container}>
-							<img src='/' alt='' className={styles.modal__image} />
+							<GoogleMapReact
+								bootstrapURLKeys={{ key: "" }}
+								defaultCenter={{
+									lat: currentemergency?.location.split(",")[1] || 0,
+									lng: currentemergency?.location.split(",")[0] || 0
+								}}
+								defaultZoom={17}
+							>
+								<Marker
+									text={`${currentemergency?.user?.firstName || ""} ${
+										currentemergency?.user?.lastName || ""
+									}`}
+								/>
+							</GoogleMapReact>
 						</div>
 					</div>
 				</div>
