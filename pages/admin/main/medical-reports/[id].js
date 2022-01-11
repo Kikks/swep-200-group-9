@@ -107,7 +107,7 @@ const MedicalReports = () => {
 		onSuccess() {
 			setMutationStatus({
 				status: "success",
-				message: "Document Verification - Stage 1 Successful"
+				message: "Document Verification - Stage 2 Successful"
 			});
 			setModalIsOpen(true);
 			refetch();
@@ -115,7 +115,7 @@ const MedicalReports = () => {
 		onError(error) {
 			setMutationStatus({
 				status: "error",
-				message: "Document Verification - Stage 1 Failed"
+				message: "Document Verification - Stage 2 Failed"
 			});
 			setModalIsOpen(true);
 		}
@@ -149,7 +149,7 @@ const MedicalReports = () => {
 	return (
 		<CheckAdmin>
 			<Head>
-				<title>Verify Student Medical Report - Admin</title>
+				<title>Verify Student Test Results - Admin</title>
 			</Head>
 
 			<div className={styles.container}>
@@ -188,7 +188,7 @@ const MedicalReports = () => {
 				<div className={styles.card} style={{ marginTop: "3rem" }}>
 					<div className={styles.profile}>
 						<div className={styles.heading__container}>
-							<h6 className='heading--6'>Document Verification - Stage 2</h6>
+							<h6 className='heading--6'>Test Results</h6>
 							{profile2.status === "complete" && (
 								<h6 className='heading--6 bold'>Verified!</h6>
 							)}

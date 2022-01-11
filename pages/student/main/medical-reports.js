@@ -262,7 +262,7 @@ const Verification = () => {
 			) : (
 				<div className={styles.container}>
 					<h4 className='heading--4' style={{ textAlign: "center" }}>
-						Medical Reports
+						Test Results
 					</h4>
 
 					<div className={styles.profile__container}>
@@ -306,7 +306,7 @@ const Verification = () => {
 							</div>
 							<div className={styles.prompt}>
 								<span>
-									Your medical reports have been verified by the health center.
+									Your test results have been verified by the health center.
 									You can now come to the Health Center to obtain your health
 									center certificate.
 								</span>
