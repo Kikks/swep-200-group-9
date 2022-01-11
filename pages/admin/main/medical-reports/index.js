@@ -48,7 +48,7 @@ const MedicalReports = () => {
 	return (
 		<CheckAdmin>
 			<Head>
-				<title>Verify Students&apos; Medical Reports - Admin</title>
+				<title>Verify Students&apos; Test Results - Admin</title>
 			</Head>
 
 			<div className={styles.container}>

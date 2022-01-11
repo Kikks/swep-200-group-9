@@ -104,7 +104,7 @@ const Sidebar = ({ sidebarIsOpen, setSidebarIsOpen }) => {
 								size='2rem'
 								color={activeLink === "medical-reports" ? "#fff" : "#458ff6"}
 							/>
-							<span className={"bold"}>Medical Reports</span>
+							<span className={"bold"}>Test Results</span>
 						</div>
 					</Link>
 
@@ -168,7 +168,7 @@ const Sidebar = ({ sidebarIsOpen, setSidebarIsOpen }) => {
 								size='2rem'
 								color={activeLink === "medical-reports" ? "#fff" : "#458ff6"}
 							/>
-							<span className={"bold"}>Medical Reports</span>
+							<span className={"bold"}>Test Results</span>
 						</div>
 					</Link>
 
