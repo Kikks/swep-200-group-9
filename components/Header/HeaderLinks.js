@@ -11,10 +11,10 @@ export const HeaderLinks = () => {
 	return (
 		<div className={styles["nav-links"]}>
 			<ul>
-				<HeaderPagesNav link={"./home"} text={"Home"} />
-				<HeaderPagesNav link={"./contact"} text={"Contact us"} />
-				<HeaderPagesNav link={"./app"} text={"App"} />
-				<HeaderPagesNav link={"./about-us"} text={"About us"} />
+				<HeaderPagesNav link={"/"} text={"Home"} />
+				<HeaderPagesNav link={"/"} text={"Contact us"} />
+				<HeaderPagesNav link={"/"} text={"App"} />
+				<HeaderPagesNav link={"/"} text={"About us"} />
 			</ul>
 
 			<Link href='/login' passHref>
