@@ -98,7 +98,7 @@ const Dashboard = () => {
 				</div>
 
 				<div className={styles.card4}>
-					<h6 className='heading--6 bold'>Medical Reports Status</h6>
+					<h6 className='heading--6 bold'>Test Results Status</h6>
 					<h4
 						className={`heading--3 bold ${styles.status} ${
 							styles[status.split(" ").join("")]
@@ -107,7 +107,7 @@ const Dashboard = () => {
 						{status}
 					</h4>
 					<Link href='/student/main/medical-reports' passHref>
-						<Button>View Medical Reports</Button>
+						<Button>View Test Results</Button>
 					</Link>
 				</div>
 

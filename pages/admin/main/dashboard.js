@@ -236,7 +236,7 @@ const Dashboard = () => {
 				</div>
 
 				<div className={styles.card4}>
-					<h6 className='heading--6 bold'>Medical Report Statistics</h6>
+					<h6 className='heading--6 bold'>Test Reuslt Statistics</h6>
 					<ResponsiveContainer height='100%' minHeight={200} width='100%'>
 						<PieChart height={200} width={200}>
 							<Pie
